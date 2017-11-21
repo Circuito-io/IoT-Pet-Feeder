@@ -1,0 +1,69 @@
+{
+	"version": 1,
+	"allow_edit": true,
+	"plugins": [
+		"/plugins/all"
+	],
+	"panes": [
+		{
+			"title": "Inputs",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 1
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "indicator_widget",
+					"settings": {
+						"value": "datasources[\"Dweet\"][\"pir\"]",
+						"title": "pir"
+					}
+				},
+				{
+					"type": "gauge_widget",
+					"settings": {
+						"max_value": "10",
+						"min_value": 0,
+						"value": "datasources[\"Dweet\"][\"pirCounter\"]",
+						"title": "pirCounter"
+					}
+				}
+			]
+		},
+		{
+			"title": "Outputs",
+			"width": 1,
+			"row": {
+				"3": 1
+			},
+			"col": {
+				"3": 3
+			},
+			"col_width": 1,
+			"widgets": [
+				{
+					"type": "plugin531a3b2b7df9e78c7300000f",
+					"settings": {
+						"html": "<style>\n.button {\n   border: 2px solid #ffffff;\n   background: #8b8b8b;\n   padding: 10px 20px;\n   box-shadow: rgba(255,255,255,0.4) 0 1px 0, inset rgba(255,255,255,0.4) 0 1px 0;\n   text-shadow: #7ea4bd 0 1px 0;\n   color: #ffffff;\n   font-size: 14px;\n   font-family: \"Helvetica Neue\",Helvetica,Arial,sans-serif;\n   text-decoration: none;\n   vertical-align: middle;\n   margin: 3px;\n   }\n.button:hover {\n   background: #ababab;\n   }\n.button:active {\n   background: #cbcbcb;\n   }\n<\\/style>\n\n<script src=\"https:\\/\\/ajax.googleapis.com\\/ajax\\/libs\\/jquery\\/1.12.4\\/jquery.min.js\" ><\\/script>\n\n<script>\n    var dweetToken = \"YOURTOKEN_output\";\n    \n    var postEvent = function (event)\n    {\n        $.ajax({\n            url:'https:\\/\\/dweet.io\\/dweet\\/for\\/' + dweetToken,\n            type:'post',\n            data:{event: event},\n\t\t\terror: function (request, status, error) {\n\t\t\t\talert(\"Error posting: \" + status + error);\n\t\t\t},\n\t\t\tsuccess: function (data, status, request) {\n\t\t\t\tif (data.this != \"succeeded\")\n\t\t\t\t{\n\t\t\t\t\talert(data.because);\n\t\t\t\t}\n\t\t\t}\n\t\t\t\n        });\n    };\n<\\/script>\n\n\n    <button type=\"button\" onclick=\"postEvent('servo')\" class=\"button\">servo<\\/button><br>\n\n    <button type=\"button\" onclick=\"postEvent('piezoSpeaker')\" class=\"button\">piezoSpeaker<\\/button><br>\n\n<button type=\"button\" onclick=\"postEvent('playGame')\" class=\"button\">Play Game</button>",
+						"height": 4
+					}
+				}
+			]
+		}
+	],
+	"datasources": [
+		{
+			"name": "Dweet",
+			"type": "dweet_io",
+			"settings": {
+				"thing_id": "YOURTOKEN_input",
+				"show_full": false
+			}
+		}
+	],
+	"columns": 3
+}
