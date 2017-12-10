@@ -1,5 +1,5 @@
 # iot-pet-feeder
-Code for the IoT pet feeder project
+
 Link to the full tutorial on our blog >> https://www.circuito.io/blog/automatic-pet-feeder/
 Notes: 
 1. After downloading the code, make sure that the pin settings match those you received from circuito.io test code.
